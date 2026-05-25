@@ -8,6 +8,7 @@ public final class StatChangeTracker {
     private static int lastFood = -1;
     private static int lastArmor = -1;
     private static int lastExperience = -1;
+    private static int lastExperienceLevel = -1;
     private static int healthTimer = 0;
     private static int foodTimer = 0;
     private static int armorTimer = 0;
@@ -23,6 +24,7 @@ public final class StatChangeTracker {
             int food = player.getFoodData().getFoodLevel();
             int armor = player.getArmorValue();
             int experience = player.totalExperience;
+            int experienceLevel = player.experienceLevel;
             if (health != lastHealth) {
                 lastHealth = health;
                 healthTimer = HEALTH_SHOW_TIME;
@@ -38,8 +40,9 @@ public final class StatChangeTracker {
                 armorTimer = OTHER_SHOW_TIME;
             }
 
-            if (experience != lastExperience) {
+            if (experience != lastExperience ||  experienceLevel != lastExperienceLevel) {
                 lastExperience = experience;
+                lastExperienceLevel = experienceLevel;
                 experienceTimer = OTHER_SHOW_TIME;
             }
 
