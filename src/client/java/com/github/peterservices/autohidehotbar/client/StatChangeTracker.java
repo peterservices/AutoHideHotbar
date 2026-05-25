@@ -1,6 +1,8 @@
 package com.github.peterservices.autohidehotbar.client;
 
+import com.github.peterservices.autohidehotbar.client.config.AutoHideHotbarConfig;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.world.entity.player.Player;
 
 public final class StatChangeTracker {
@@ -16,9 +18,8 @@ public final class StatChangeTracker {
     private static final int HEALTH_SHOW_TIME = 40;
     private static final int OTHER_SHOW_TIME = 25;
 
-    public static void tick() {
-        Minecraft minecraft = Minecraft.getInstance();
-        Player player = minecraft.player;
+    public static void tick(Minecraft client) {
+        Player player = client.player;
         if (player != null) {
             float health = player.getHealth();
             int food = player.getFoodData().getFoodLevel();
@@ -64,19 +65,27 @@ public final class StatChangeTracker {
         }
     }
 
+    private static boolean isInInventoryUI() {
+        return Minecraft.getInstance().screen instanceof InventoryScreen;
+    }
+
+    private static boolean shouldShowInInventory() {
+        return isInInventoryUI() && !AutoHideHotbarConfig.getInstance().useCustomStatsDisplay;
+    }
+
     public static boolean shouldShowHealth() {
-        return healthTimer > 0;
+        return shouldShowInInventory() || healthTimer > 0;
     }
 
     public static boolean shouldShowFood() {
-        return foodTimer > 0;
+        return shouldShowInInventory() || foodTimer > 0;
     }
 
     public static boolean shouldShowArmor() {
-        return armorTimer > 0;
+        return shouldShowInInventory() || armorTimer > 0;
     }
 
     public static boolean shouldShowExperience() {
-        return experienceTimer > 0;
+        return shouldShowInInventory() || experienceTimer > 0;
     }
 }

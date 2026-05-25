@@ -1,5 +1,6 @@
 package com.github.peterservices.autohidehotbar.client.mixin;
 
+import com.github.peterservices.autohidehotbar.client.config.AutoHideHotbarConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
@@ -13,6 +14,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class InventoryStatsMixin {
     @Inject(method = {"extractRenderState*"}, at = {@At("TAIL")})
     private void autohidehotbar$renderStats(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a, CallbackInfo ci) {
+        if (!AutoHideHotbarConfig.getInstance().useCustomStatsDisplay) {
+            return;
+        }
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
         if (player != null) {
