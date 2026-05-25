@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "autohidehotbar",
+  "version": "1.1",
+  "name": "Auto-Hide Hotbar",
+  "description": "Automatic HUD hiding when not in use.",
+  "authors": ["Ticataco", "Alphayt"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/autohidehotbar/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.github.peterservices.autohidehotbar.client.AutoHideHotbarSaverClient"
+    ]
+  },
+  "mixins": [
+    "autohidehotbar.client.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "fabric-api": "*",
+    "minecraft": "~26.1.2"
+  }
+}
