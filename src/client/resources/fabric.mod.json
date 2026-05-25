@@ -11,7 +11,7 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "com.github.peterservices.autohidehotbar.client.AutoHideHotbarSaverClient"
+      "com.github.peterservices.autohidehotbar.client.AutoHideHotbarClient"
     ]
   },
   "mixins": [

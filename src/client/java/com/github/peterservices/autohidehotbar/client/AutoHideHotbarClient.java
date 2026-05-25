@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
 
-public final class AutoHideHotbarSaverClient implements ClientModInitializer {
+public final class AutoHideHotbarClient implements ClientModInitializer {
     public void onInitializeClient() {
         HotbarStateTracker.init();
         ClientTickEvents.END_CLIENT_TICK.register((client) -> StatChangeTracker.tick());
