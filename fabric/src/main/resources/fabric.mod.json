@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "autohidehotbar",
+  "version": "${version}",
+  "name": "${display_name}",
+  "description": "${description}",
+  "authors": ["${author}", "${credits}"],
+  "contact": {},
+  "license": "${license}",
+  "icon": "assets/autohidehotbar/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.github.peterservices.autohidehotbar.AutoHideHotbarClient"
+    ]
+  },
+  "mixins": [
+    "autohidehotbar.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabric_loader_minimum}",
+    "fabric-api": "*",
+    "minecraft": "~${minecraft_version}",
+    "cloth-config": ">=${cloth_config_version}",
+    "architectury": "~${architectury_api_version}"
+  }
+}

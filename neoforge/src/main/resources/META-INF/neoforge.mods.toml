@@ -1,0 +1,43 @@
+modLoader = "javafml"
+loaderVersion = "${loader_range}"
+#issueTrackerURL = ""
+license = "${license}"
+
+[[mods]]
+modId = "autohidehotbar"
+version = "${version}"
+displayName = "${display_name}"
+authors = "${author}, ${credits}"
+description = "${description}"
+logoFile = "assets/autohidehotbar/icon.png"
+
+[[dependencies.autohidehotbar]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neoforge_range}"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.autohidehotbar]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_range}"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.autohidehotbar]]
+modId = "architectury"
+type = "required"
+versionRange = "${architectury_range}"
+ordering = "AFTER"
+side = "CLIENT"
+
+[[dependencies.autohidehotbar]]
+modId = "cloth_config"
+type = "required"
+versionRange = "${cloth_config_range}"
+ordering = "AFTER"
+side = "CLIENT"
+
+[[mixins]]
+config = "autohidehotbar.mixins.json"

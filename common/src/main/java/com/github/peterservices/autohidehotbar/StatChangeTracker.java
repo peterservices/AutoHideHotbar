@@ -1,6 +1,6 @@
-package com.github.peterservices.autohidehotbar.client;
+package com.github.peterservices.autohidehotbar;
 
-import com.github.peterservices.autohidehotbar.client.config.AutoHideHotbarConfig;
+import com.github.peterservices.autohidehotbar.config.AutoHideHotbarConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.world.entity.player.Player;
@@ -26,6 +26,7 @@ public final class StatChangeTracker {
             int armor = player.getArmorValue();
             int experience = player.totalExperience;
             int experienceLevel = player.experienceLevel;
+
             if (health != lastHealth) {
                 lastHealth = health;
                 healthTimer = HEALTH_SHOW_TIME;

@@ -1,4 +1,4 @@
-package com.github.peterservices.autohidehotbar.client.mixin;
+package com.github.peterservices.autohidehotbar.mixin;
 
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import org.spongepowered.asm.mixin.Mixin;

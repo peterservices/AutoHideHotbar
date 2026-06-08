@@ -1,6 +1,6 @@
-package com.github.peterservices.autohidehotbar.client.mixin;
+package com.github.peterservices.autohidehotbar.mixin;
 
-import com.github.peterservices.autohidehotbar.client.config.AutoHideHotbarConfig;
+import com.github.peterservices.autohidehotbar.config.AutoHideHotbarConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;

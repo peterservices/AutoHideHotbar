@@ -1,4 +1,4 @@
-package com.github.peterservices.autohidehotbar.client.config;
+package com.github.peterservices.autohidehotbar.config;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
