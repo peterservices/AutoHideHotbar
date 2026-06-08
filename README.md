@@ -3,10 +3,11 @@
 Automatically hides Minecraft's HUD when not in use to protect OLED displays from burn-in and provide a more minimal experience.
 
 > [!NOTE]
-> This project is a fork of Alphayt's mod [OLED Saver](https://modrinth.com/mod/oled-saver) updated for Minecraft 26.1+.
+> This project is a fork of Alphayt's mod [OLED Saver](https://modrinth.com/mod/oled-saver) with added support for NeoForge and updated for Minecraft 26.1+.
 
 ### **Features**
 
+* Supports both Fabric and NeoForge
 * Hotbar is only visible when switching inventory slots
 * Health bar is only visible when your health changes (Taking damage, regenerating, etc.)
 * Hunger bar is only visible when your hunger changes (Eating, hunger loss, etc.)
@@ -15,9 +16,14 @@ Automatically hides Minecraft's HUD when not in use to protect OLED displays fro
 * Toggle on or off held item tooltips in the configuration (Hidden by default)
 * Stats (Health, hunger, XP, armor) always show while in the inventory (Legacy text stats available in configuration)
 
-### **Dependencies**
-* Fabric API
-* Cloth Config API
+### **Fabric Dependencies**
+* [Cloth Config API](https://modrinth.com/mod/cloth-config)
+* [Architectury API](https://modrinth.com/mod/architectury-api)
+* [Fabric API](https://modrinth.com/mod/fabric-api)
+
+### **NeoForge Dependencies**
+* [Cloth Config API](https://modrinth.com/mod/cloth-config)
+* [Architectury API](https://modrinth.com/mod/architectury-api)
 
 ### **Download**
 Compiled jars are available in the [GitHub Releases](https://github.com/peterservices/AutoHideHotbar/releases) tab.
