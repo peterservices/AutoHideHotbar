@@ -33,14 +33,12 @@ jobs:
 
       - name: Append -dev to end of artifact names
         run: |
-          shopt -s extglob
-
-          file=fabric/build/libs/!(*-@(raw|sources)).jar
+          file=$(echo fabric/build/libs/!(*-@(raw|sources)).jar)
           base="${file%.jar}"
           ext="${file##*.}"
           mv "$file" "${base}-dev.${ext}"
 
-          file=neoforge/build/libs/!(*-@(raw|sources)).jar
+          file=$(echo neoforge/build/libs/!(*-@(raw|sources)).jar)
           base="${file%.*}"
           ext="${file##*.}"
           mv "$file" "${base}-dev.${ext}"
