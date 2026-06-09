@@ -30,9 +30,11 @@ jobs:
 
       - name: Build
         run: ./gradlew build
-      
+
       - name: Append -dev to end of artifact names
         run: |
+          shopt -s extglob
+
           file = fabric/build/libs/!(*-@(raw|javadoc)).jar
           base = "${file%.jar}"
           ext = "${file##*.}"
