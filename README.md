@@ -1,5 +1,7 @@
 # Auto-Hide Hotbar
 
+[![Build](https://github.com/peterservices/AutoHideHotbar/actions/workflows/build.yml/badge.svg)](https://github.com/peterservices/AutoHideHotbar/actions/workflows/build.yml)
+
 Automatically hides Minecraft's HUD when not in use to protect OLED displays from burn-in and provide a more minimal experience.
 
 > [!NOTE]
@@ -16,6 +18,9 @@ Automatically hides Minecraft's HUD when not in use to protect OLED displays fro
 * Toggle on or off held item tooltips in the configuration (Hidden by default)
 * Stats (Health, hunger, XP, armor) always show while in the inventory (Legacy text stats available in configuration)
 
+### **Download**
+Compiled releases are available on [GitHub Releases](https://github.com/peterservices/AutoHideHotbar/releases) (recommended), or you can download the latest [development build](https://github.com/peterservices/AutoHideHotbar/actions/workflows/build.yml).
+
 ### **Fabric Dependencies**
 * [Cloth Config API](https://modrinth.com/mod/cloth-config)
 * [Architectury API](https://modrinth.com/mod/architectury-api)
@@ -24,9 +29,6 @@ Automatically hides Minecraft's HUD when not in use to protect OLED displays fro
 ### **NeoForge Dependencies**
 * [Cloth Config API](https://modrinth.com/mod/cloth-config)
 * [Architectury API](https://modrinth.com/mod/architectury-api)
-
-### **Download**
-Compiled jars are available in the [GitHub Releases](https://github.com/peterservices/AutoHideHotbar/releases) tab.
 
 ---
 
