@@ -5,7 +5,7 @@ import dev.architectury.event.events.client.ClientTickEvent;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 
-public interface AutoHideHotbarClientInterface<T> {
+public interface AutoHideHotbarClientInterface {
     static void initClient() {
         AutoConfig.register(AutoHideHotbarConfig.class, JanksonConfigSerializer::new);
         HotbarStateTracker.init();
