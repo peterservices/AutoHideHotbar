@@ -24,6 +24,13 @@ subprojects {
         archivesName = "$rootProject.archives_name-$project.name"
     }
 
+    plugins.withId('com.gradleup.shadow') {
+        tasks.named('shadowJar', Jar) {
+            // Add the minecraft version to the end of the main jar filename
+            archiveFileName.set("${archiveBaseName.get()}-${mod_version}+${minecraft_version}.jar")
+        }
+    }
+
     repositories {
         // Add repositories to retrieve artifacts from in here.
         // You should only use this when depending on other mods because
