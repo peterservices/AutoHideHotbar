@@ -35,26 +35,26 @@ jobs:
         run: |
           shopt -s extglob
 
-          file = fabric/build/libs/!(*-@(raw|javadoc)).jar
-          base = "${file%.jar}"
-          ext = "${file##*.}"
+          file=fabric/build/libs/!(*-@(raw|sources)).jar
+          base="${file%.jar}"
+          ext="${file##*.}"
           mv "$file" "${base}-dev.${ext}"
 
-          file = neoforge/build/libs/!(*-@(raw|javadoc)).jar
-          base = "${file%.*}"
-          ext = "${file##*.}"
+          file=neoforge/build/libs/!(*-@(raw|sources)).jar
+          base="${file%.*}"
+          ext="${file##*.}"
           mv "$file" "${base}-dev.${ext}"
 
       - name: Upload Fabric artifact
         uses: actions/upload-artifact@v7
         with:
-          path: fabric/build/libs/!(*-@(raw|javadoc))-dev.jar
+          path: fabric/build/libs/!(*-@(raw|sources))-dev.jar
           archive: false
 
       - name: Upload NeoForge artifact
         uses: actions/upload-artifact@v7
         with:
-          path: neoforge/build/libs/!(*-@(raw|javadoc))-dev.jar
+          path: neoforge/build/libs/!(*-@(raw|sources))-dev.jar
           archive: false
 
   release:
@@ -73,7 +73,7 @@ jobs:
       - name: Remove -dev from end of artifact names
         run: |
           for file in *-dev.jar; do
-            new_name = "${file/-dev/}"
+            new_name="${file/-dev/}"
             mv "$file" "$new_name"
           done
 
