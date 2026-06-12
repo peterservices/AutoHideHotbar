@@ -5,7 +5,7 @@
 Automatically hides Minecraft's HUD when not in use to protect OLED displays from burn-in and provide a more minimal experience.
 
 > [!NOTE]
-> This project is a fork of Alphayt's mod [OLED Saver](https://modrinth.com/mod/oled-saver) with added support for NeoForge and updated for Minecraft 26.1+.
+> This project is a fork of Alphayt's mod [OLED Saver](https://modrinth.com/mod/oled-saver) with extra features, support for NeoForge, and support for Minecraft 26.1+.
 
 ### **Features**
 
