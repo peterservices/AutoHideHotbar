@@ -64,6 +64,16 @@ public final class StatChangeTracker {
         }
     }
 
+    private static boolean isMaxHealth() {
+        Player player = Minecraft.getInstance().player;
+        return player != null && player.getMaxHealth() == lastHealth;
+    }
+
+    private static boolean isMaxFood() {
+        Player player = Minecraft.getInstance().player;
+        return player != null && !player.getFoodData().needsFood();
+    }
+
     private static boolean isInInventoryUI() {
         return Minecraft.getInstance().screen instanceof InventoryScreen;
     }
@@ -73,18 +83,18 @@ public final class StatChangeTracker {
     }
 
     public static boolean shouldShowHealth() {
-        return shouldShowInInventory() || healthTimer > 0;
+        return AutoHideHotbarConfig.neverHideHealth || shouldShowInInventory() || (AutoHideHotbarConfig.onlyHideWhenFullHealth && !isMaxHealth()) || healthTimer > 0;
     }
 
     public static boolean shouldShowFood() {
-        return shouldShowInInventory() || foodTimer > 0;
+        return AutoHideHotbarConfig.neverHideFood || shouldShowInInventory() || (AutoHideHotbarConfig.onlyHideWhenFullFood && !isMaxFood()) || foodTimer > 0;
     }
 
     public static boolean shouldShowArmor() {
-        return shouldShowInInventory() || armorTimer > 0;
+        return AutoHideHotbarConfig.neverHideArmor || shouldShowInInventory() || armorTimer > 0;
     }
 
     public static boolean shouldShowExperience() {
-        return shouldShowInInventory() || experienceTimer > 0;
+        return AutoHideHotbarConfig.neverHideExperience || shouldShowInInventory() || experienceTimer > 0;
     }
 }

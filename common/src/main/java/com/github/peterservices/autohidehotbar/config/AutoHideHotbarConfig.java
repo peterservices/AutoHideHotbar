@@ -8,6 +8,15 @@ public class AutoHideHotbarConfig extends MidnightConfig {
 
     @Entry(category = GENERAL) public static boolean hideHeldItemTooltips = true;
     @Entry(category = GENERAL) public static boolean useCustomStatsDisplay = false;
+    @Comment(category = GENERAL) public static Comment spacer1;
+    @Entry(category = GENERAL) public static boolean onlyHideWhenFullHealth = false;
+    @Entry(category = GENERAL) public static boolean onlyHideWhenFullFood = false;
+    @Comment(category = GENERAL) public static Comment spacer2;
+    @Entry(category = GENERAL) public static boolean neverHideHotbar = false;;
+    @Entry(category = GENERAL) public static boolean neverHideHealth = false;
+    @Entry(category = GENERAL) public static boolean neverHideFood = false;
+    @Entry(category = GENERAL) public static boolean neverHideArmor = false;
+    @Entry(category = GENERAL) public static boolean neverHideExperience = false;
 
     @Comment(category = TIMINGS, centered = true) public static Comment timingsComment;
     @Entry(category = TIMINGS, min = 0) public static int hotbarShowMilliseconds = 1000;

@@ -24,6 +24,6 @@ public class HotbarStateTracker {
     }
 
     public static boolean shouldRender() {
-        return shouldShowHotbarRaw();
+        return AutoHideHotbarConfig.neverHideHotbar || shouldShowHotbarRaw();
     }
 }
