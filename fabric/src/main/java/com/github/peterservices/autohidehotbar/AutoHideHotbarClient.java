@@ -15,7 +15,7 @@ public final class AutoHideHotbarClient implements AutoHideHotbarClientInterface
             }
         });
         HudElementRegistry.replaceElement(VanillaHudElements.HELD_ITEM_TOOLTIP, (original) -> (ctx, tick) -> {
-            if (!AutoHideHotbarConfig.getInstance().hideHeldItemTooltips) {
+            if (!AutoHideHotbarConfig.hideHeldItemTooltips) {
                 original.extractRenderState(ctx, tick);
             }
         });

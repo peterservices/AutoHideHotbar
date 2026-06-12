@@ -24,7 +24,7 @@ public final class AutoHideHotbarClient implements AutoHideHotbarClientInterface
                 event.setCanceled(true);
             }
         } else if (id.equals(VanillaGuiLayers.SELECTED_ITEM_NAME)) {
-            if (AutoHideHotbarConfig.getInstance().hideHeldItemTooltips) {
+            if (AutoHideHotbarConfig.hideHeldItemTooltips) {
                 event.setCanceled(true);
             }
         } else if (id.equals(VanillaGuiLayers.CONTEXTUAL_INFO_BAR_BACKGROUND)) {

@@ -1,11 +1,11 @@
 package com.github.peterservices.autohidehotbar;
 
+import com.github.peterservices.autohidehotbar.config.AutoHideHotbarConfig;
 import dev.architectury.event.events.client.ClientTickEvent;
 
 public class HotbarStateTracker {
     private static int lastSlot = -1;
     private static long lastChangeTime = 0L;
-    private static final long HIDE_DELAY_MS = 1000L;
 
     public static void init() {
         ClientTickEvent.CLIENT_POST.register((client) -> {
@@ -20,7 +20,7 @@ public class HotbarStateTracker {
     }
 
     private static boolean shouldShowHotbarRaw() {
-        return System.currentTimeMillis() - lastChangeTime < HIDE_DELAY_MS;
+        return System.currentTimeMillis() - lastChangeTime < AutoHideHotbarConfig.hotbarShowMilliseconds;
     }
 
     public static boolean shouldRender() {

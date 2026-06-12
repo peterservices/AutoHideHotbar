@@ -15,8 +15,6 @@ public final class StatChangeTracker {
     private static int foodTimer = 0;
     private static int armorTimer = 0;
     private static int experienceTimer = 0;
-    private static final int HEALTH_SHOW_TIME = 40;
-    private static final int OTHER_SHOW_TIME = 25;
 
     public static void tick(Minecraft client) {
         Player player = client.player;
@@ -29,23 +27,23 @@ public final class StatChangeTracker {
 
             if (health != lastHealth) {
                 lastHealth = health;
-                healthTimer = HEALTH_SHOW_TIME;
+                healthTimer = AutoHideHotbarConfig.healthShowTicks;
             }
 
             if (food != lastFood) {
                 lastFood = food;
-                foodTimer = OTHER_SHOW_TIME;
+                foodTimer = AutoHideHotbarConfig.foodShowTicks;
             }
 
             if (armor != lastArmor) {
                 lastArmor = armor;
-                armorTimer = OTHER_SHOW_TIME;
+                armorTimer = AutoHideHotbarConfig.armorShowTicks;
             }
 
-            if (experience != lastExperience ||  experienceLevel != lastExperienceLevel) {
+            if (experience != lastExperience || experienceLevel != lastExperienceLevel) {
                 lastExperience = experience;
                 lastExperienceLevel = experienceLevel;
-                experienceTimer = OTHER_SHOW_TIME;
+                experienceTimer = AutoHideHotbarConfig.experienceShowTicks;
             }
 
             if (healthTimer > 0) {
@@ -71,7 +69,7 @@ public final class StatChangeTracker {
     }
 
     private static boolean shouldShowInInventory() {
-        return isInInventoryUI() && !AutoHideHotbarConfig.getInstance().useCustomStatsDisplay;
+        return isInInventoryUI() && !AutoHideHotbarConfig.useCustomStatsDisplay;
     }
 
     public static boolean shouldShowHealth() {
