@@ -1,19 +1,18 @@
 package com.github.peterservices.autohidehotbar.config;
 
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.ConfigData;
-import me.shedaniel.autoconfig.annotation.Config;
-import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
+import eu.midnightdust.lib.config.MidnightConfig;
 
-@Config(name = "autohidehotbar")
-public class AutoHideHotbarConfig implements ConfigData {
-    @Comment("Whether tooltips for held items are hidden")
-    public boolean hideHeldItemTooltips = true;
-    
-    @Comment("Whether stats are represented as text instead of the vanilla stats UI while in the inventory")
-    public boolean useCustomStatsDisplay = false;
+public class AutoHideHotbarConfig extends MidnightConfig {
+    public static final String GENERAL = "general";
+    public static final String TIMINGS = "timings";
 
-    public static AutoHideHotbarConfig getInstance() {
-        return AutoConfig.getConfigHolder(AutoHideHotbarConfig.class).getConfig();
-    }
+    @Entry(category = GENERAL) public static boolean hideHeldItemTooltips = true;
+    @Entry(category = GENERAL) public static boolean useCustomStatsDisplay = false;
+
+    @Comment(category = TIMINGS, centered = true) public static Comment timingsComment;
+    @Entry(category = TIMINGS, min = 0) public static int hotbarShowMilliseconds = 1000;
+    @Entry(category = TIMINGS, min = 0) public static int healthShowTicks = 40;
+    @Entry(category = TIMINGS, min = 0) public static int foodShowTicks = 25;
+    @Entry(category = TIMINGS, min = 0) public static int armorShowTicks = 25;
+    @Entry(category = TIMINGS, min = 0) public static int experienceShowTicks = 25;
 }

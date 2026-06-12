@@ -1,0 +1,13 @@
+{
+  "autohidehotbar.midnightconfig.title":"Auto-Hide Hotbar Config",
+  "autohidehotbar.midnightconfig.category.general":"General",
+  "autohidehotbar.midnightconfig.category.timings":"Timings",
+  "autohidehotbar.midnightconfig.hideHeldItemTooltips":"Hide tooltips of held items",
+  "autohidehotbar.midnightconfig.useCustomStatsDisplay":"Use custom stats display while in inventory",
+  "autohidehotbar.midnightconfig.timingsComment":"Setting a timing to 0 will prevent the element from showing",
+  "autohidehotbar.midnightconfig.hotbarShowMilliseconds":"Hotbar show time (milliseconds)",
+  "autohidehotbar.midnightconfig.healthShowTicks":"Health show time (ticks)",
+  "autohidehotbar.midnightconfig.foodShowTicks":"Food show time (ticks)",
+  "autohidehotbar.midnightconfig.armorShowTicks":"Armor show time (ticks)",
+  "autohidehotbar.midnightconfig.experienceShowTicks":"Experience show time (ticks)"
+}
