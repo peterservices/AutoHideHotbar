@@ -32,12 +32,5 @@ versionRange = "${architectury_range}"
 ordering = "AFTER"
 side = "CLIENT"
 
-[[dependencies.autohidehotbar]]
-modId = "cloth_config"
-type = "required"
-versionRange = "${cloth_config_range}"
-ordering = "AFTER"
-side = "CLIENT"
-
 [[mixins]]
 config = "autohidehotbar.mixins.json"
