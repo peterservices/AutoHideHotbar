@@ -22,5 +22,14 @@
     "fabric-api": "*",
     "minecraft": "~${minecraft_minimum}",
     "architectury": "~${architectury_api_version}"
+  },
+  "custom": {
+    "mc-publish": {
+      "dependencies": [
+        "midnightlib@${midnightlib_version}(embedded){modrinth:codAaoxh}{curseforge:488090}",
+        "fabric-api(required){modrinth:P7dR8mSH}{curseforge:306612}",
+        "architectury(required){modrinth:lhGA9TYQ}{curseforge:419699}"
+      ]
+    }
   }
 }

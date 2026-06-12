@@ -54,6 +54,7 @@ processResources {
     inputs.property 'minecraft_range', rootProject.minecraft_range
     inputs.property 'neoforge_range', rootProject.neoforge_range
     inputs.property 'architectury_range', rootProject.architectury_range
+    inputs.property 'midnightlib_version', rootProject.midnightlib_version
 
     filesMatching('META-INF/neoforge.mods.toml') {
         def toExpand = [:]

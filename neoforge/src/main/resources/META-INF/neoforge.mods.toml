@@ -32,5 +32,11 @@ versionRange = "${architectury_range}"
 ordering = "AFTER"
 side = "CLIENT"
 
+[mc-publish]
+dependencies=[
+    "midnightlib@${midnightlib_version}(embedded){modrinth:codAaoxh}{curseforge:488090}",
+    "architectury(required){modrinth:lhGA9TYQ}{curseforge:419699}"
+]
+
 [[mixins]]
 config = "autohidehotbar.mixins.json"

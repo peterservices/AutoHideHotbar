@@ -49,6 +49,7 @@ processResources {
     inputs.property 'fabric_loader_minimum', rootProject.fabric_loader_minimum
     inputs.property 'minecraft_minimum', rootProject.minecraft_minimum
     inputs.property 'architectury_api_version', rootProject.architectury_api_version
+    inputs.property 'midnightlib_version', rootProject.midnightlib_version
 
     filesMatching('fabric.mod.json') {
         def toExpand = [:]
