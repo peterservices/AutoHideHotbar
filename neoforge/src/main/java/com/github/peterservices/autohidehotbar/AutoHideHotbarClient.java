@@ -4,14 +4,14 @@ import com.github.peterservices.autohidehotbar.config.AutoHideHotbarConfig;
 import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 
 @EventBusSubscriber(modid = "autohidehotbar")
 public final class AutoHideHotbarClient implements AutoHideHotbarClientInterface {
     @SubscribeEvent
-    public static void onInitializeClient(FMLClientSetupEvent event) {
+    public static void onInitialize(FMLCommonSetupEvent event) {
         AutoHideHotbarClientInterface.initClient();
     }
 
