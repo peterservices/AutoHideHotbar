@@ -15,19 +15,19 @@ Automatically hides Minecraft's HUD when not in use to protect OLED displays fro
 * Hunger bar is only visible when your hunger changes (Eating, hunger loss, etc.)
 * Armor bar is only visible when your armor changes (Equipping/dequipping, breaking, etc.)
 * XP bar and level is only visible when XP changes (Picking up XP orbs, enchanting, etc.)
-* Toggle on or off held item tooltips in the configuration (Hidden by default)
-* Stats (Health, hunger, XP, armor) always show while in the inventory (Legacy text stats available in configuration)
+* Hide held item tooltips (Toggle-able in config)
+* Stats (Health, hunger, XP, armor) always show while in the inventory (Legacy text stats mode available in config)
+* Fully configure timings for how long UI elements are shown before they hide again
+* GUI configuration via MidnightLib (bundled with mod)
 
 ### **Download**
 Compiled releases are available on [GitHub Releases](https://github.com/peterservices/AutoHideHotbar/releases) (recommended), or you can download the latest [development build](https://github.com/peterservices/AutoHideHotbar/actions/workflows/build.yml).
 
 ### **Fabric Dependencies**
-* [Cloth Config API](https://modrinth.com/mod/cloth-config)
 * [Architectury API](https://modrinth.com/mod/architectury-api)
 * [Fabric API](https://modrinth.com/mod/fabric-api)
 
 ### **NeoForge Dependencies**
-* [Cloth Config API](https://modrinth.com/mod/cloth-config)
 * [Architectury API](https://modrinth.com/mod/architectury-api)
 
 ---
