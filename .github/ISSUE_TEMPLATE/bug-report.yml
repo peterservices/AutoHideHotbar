@@ -1,0 +1,97 @@
+name: Bug Report
+description: Report a bug
+labels: [bug]
+assignees: 'peterservices'
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before reporting a bug or crash here, please make sure you are on the latest supported version.
+
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: What you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Actual behavior
+      description: What actually happened.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: Detailed instructions and/or a screenshot/video reproduce the issue
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: Device Info
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Select the operating system you are running
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: minecraft-version
+    attributes:
+      label: Minecraft version
+      placeholder: "26.1.2"
+    validations:
+      required: true
+
+  - type: input
+    id: autohidehotbar-version
+    attributes:
+      label: Auto-Hide Hotbar version
+      placeholder: "2.2.0"
+    validations:
+      required: true
+
+  - type: input
+    id: logs
+    attributes:
+      label: Logs
+      description: A link to your latest.log after experiencing the bug
+    validations:
+      required: true
+
+  - type: checkboxes
+    attributes:
+      label: Agreements
+      description: By submitting an issue you agree to the following
+      options:
+        - label: My version of Minecraft is supported.
+          required: true
+        - label: I am running the latest version of Auto-Hide Hotbar.
+          required: true
+        - label: I have searched for and found no duplicate issues regarding this.
+          required: true
+
+  - type: textarea
+    attributes:
+      label: Other
+      description: |
+        Please include any other information that may be helpful below.
+        The more information you send, the easier the issue may be to fix.
+    validations:
+      required: false
