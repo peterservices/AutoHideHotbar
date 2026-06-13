@@ -11,7 +11,7 @@ jobs:
       - name: Download release
         uses: robinraju/release-downloader@v1
         with:
-          tag: ${{ github.ref_name }}
+          tag: ${{ github.event.release.tag_name }}
           fileName: '*.jar'
         
       - name: Publish Fabric mod to Modrinth and CurseForge
@@ -25,6 +25,8 @@ jobs:
 
           loaders: |
             fabric
+
+          version: ${{ github.event.release.tag_name }}-fabric
 
           files: |
             autohidehotbar-fabric-*.jar
@@ -40,6 +42,8 @@ jobs:
 
           loaders: |
             neoforge
+
+          version: ${{ github.event.release.tag_name }}-neoforge
 
           files: |
             autohidehotbar-neoforge-*.jar
