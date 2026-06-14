@@ -7,8 +7,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin({AbstractContainerScreen.class})
 public interface HandledScreenAccessor {
     @Accessor("leftPos")
-    int autohidehotbar$getX();
+    int getX();
 
     @Accessor("topPos")
-    int autohidehotbar$getY();
+    int getY();
 }

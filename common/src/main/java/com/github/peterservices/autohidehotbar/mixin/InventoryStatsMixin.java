@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin({InventoryScreen.class})
 public abstract class InventoryStatsMixin {
     @Inject(method = {"extractRenderState*"}, at = {@At("TAIL")})
-    private void autohidehotbar$renderStats(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a, CallbackInfo ci) {
+    private void renderStats(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a, CallbackInfo ci) {
         if (!AutoHideHotbarConfig.useCustomStatsDisplay) {
             return;
         }
@@ -21,11 +21,11 @@ public abstract class InventoryStatsMixin {
         Player player = minecraft.player;
         if (player != null) {
             HandledScreenAccessor screen = (HandledScreenAccessor)this;
-            int x = screen.autohidehotbar$getX() + 126;
-            int y = screen.autohidehotbar$getY() + 55;
+            int x = screen.getX() + 126;
+            int y = screen.getY() + 55;
             int textColor = -9474193;
             float rawHearts = player.getHealth() / 2.0F;
-            float hearts = (float)Math.round(rawHearts * 2.0F) / 2.0F;
+            float hearts = Math.round(rawHearts * 2.0F) / 2.0F;
             int food = player.getFoodData().getFoodLevel() / 2;
             int lvl = player.experienceLevel;
             int xpPct = (int)(player.experienceProgress * 100.0F);
