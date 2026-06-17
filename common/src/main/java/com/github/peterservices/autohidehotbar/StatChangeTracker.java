@@ -75,7 +75,7 @@ public final class StatChangeTracker {
     }
 
     private static boolean isInInventoryUI() {
-        return Minecraft.getInstance().screen instanceof InventoryScreen;
+        return Minecraft.getInstance().gui.screen() instanceof InventoryScreen;
     }
 
     private static boolean shouldShowInInventory() {
