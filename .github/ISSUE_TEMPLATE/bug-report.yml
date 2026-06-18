@@ -62,8 +62,8 @@ body:
   - type: input
     id: autohidehotbar-version
     attributes:
-      label: Auto-Hide Hotbar version
-      placeholder: "2.2.0"
+      label: Auto-Hide Hotbar version and loader
+      placeholder: "2.2.0 fabric"
     validations:
       required: true
 
@@ -71,9 +71,9 @@ body:
     id: logs
     attributes:
       label: Logs
-      description: A link to your latest.log after experiencing the bug
+      description: A link to your latest.log after experiencing the bug (If applicable)
     validations:
-      required: true
+      required: false
 
   - type: checkboxes
     attributes:
@@ -82,9 +82,9 @@ body:
       options:
         - label: My version of Minecraft is supported.
           required: true
-        - label: I am running the latest version of Auto-Hide Hotbar.
+        - label: I am running the latest version of Auto-Hide Hotbar for my Minecraft version.
           required: true
-        - label: I have searched for and found no duplicate issues regarding this.
+        - label: I have searched for and found no duplicate issues regarding this issue.
           required: true
 
   - type: textarea
