@@ -48,7 +48,7 @@ processResources {
     inputs.property 'license', rootProject.license
     inputs.property 'fabric_loader_minimum', rootProject.fabric_loader_minimum
     inputs.property 'minecraft_minimum', rootProject.minecraft_minimum
-    inputs.property 'architectury_api_version', rootProject.architectury_api_version
+    inputs.property 'architectury_minimum', rootProject.architectury_minimum
     inputs.property 'midnightlib_version', rootProject.midnightlib_version
 
     filesMatching('fabric.mod.json') {
