@@ -1,0 +1,52 @@
+name: Feature Request
+description: Suggest a feature
+labels: [enhancement]
+assignees: 'peterservices'
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for submitting a feature request! Please be detailed so it may be considered and implemented easier.
+        Please search for duplicate feature requests (even closed), and if one exists, add a comment there instead.
+
+  - type: textarea
+    attributes:
+      label: Problem with current mod
+      description: Why does the mod need to be changed to add this?
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Proposed solution
+      description: A clear description of what you want.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Describe alternatives you've tried
+      description: List any alternatives you might have tried to get the feature you want
+    validations:
+      required: true
+
+  - type: checkboxes
+    attributes:
+      label: Agreements
+      description: By submitting a feature request you agree to the following
+      options:
+        - label: I have searched for and found no duplicate feature requests regarding this feature.
+          required: true
+        - label: This feature is not available for the latest supported Minecraft version.
+          required: false
+        - label: This feature is available for the latest supported Minecraft version, but I would like it backported.
+          required: false
+
+  - type: textarea
+    attributes:
+      label: Other
+      description: |
+        Please include any additional context or screenshots about your feature request.
+    validations:
+      required: false
