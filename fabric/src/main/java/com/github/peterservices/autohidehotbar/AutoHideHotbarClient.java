@@ -20,7 +20,7 @@ public final class AutoHideHotbarClient implements AutoHideHotbarClientInterface
             }
         });
         HudElementRegistry.replaceElement(VanillaHudElements.INFO_BAR, (original) -> (ctx, tick) -> {
-            if (StatChangeTracker.shouldShowExperience()) {
+            if (StatChangeTracker.shouldShowExperience() || StatChangeTracker.shouldShowJumpBar()) {
                 original.extractRenderState(ctx, tick);
             }
         });
@@ -41,6 +41,11 @@ public final class AutoHideHotbarClient implements AutoHideHotbarClientInterface
         });
         HudElementRegistry.replaceElement(VanillaHudElements.FOOD_BAR, (original) -> (ctx, tick) -> {
             if (StatChangeTracker.shouldShowFood()) {
+                original.extractRenderState(ctx, tick);
+            }
+        });
+        HudElementRegistry.replaceElement(VanillaHudElements.MOUNT_HEALTH, (original) -> (ctx, tick) -> {
+            if (StatChangeTracker.shouldShowVehicleHealth()) {
                 original.extractRenderState(ctx, tick);
             }
         });

@@ -2,10 +2,14 @@ package com.github.peterservices.autohidehotbar;
 
 import com.github.peterservices.autohidehotbar.config.AutoHideHotbarConfig;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.*;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 
 public final class StatChangeTracker {
+    // Player stats
     private static float lastHealth = -1.0F;
     private static int lastFood = -1;
     private static int lastArmor = -1;
@@ -16,14 +20,22 @@ public final class StatChangeTracker {
     private static int armorTimer = 0;
     private static int experienceTimer = 0;
 
+    // Vehicle stats
+    private static float lastVehicleHealth = -1.0F;
+    private static int vehicleHealthTimer = 0;
+
     public static void tick(Minecraft client) {
-        Player player = client.player;
+        LocalPlayer player = client.player;
         if (player != null) {
+            // Player variables
             float health = player.getHealth();
             int food = player.getFoodData().getFoodLevel();
             int armor = player.getArmorValue();
             int experience = player.totalExperience;
             int experienceLevel = player.experienceLevel;
+
+            // Vehicle variables
+            Entity vehicle = player.getControlledVehicle();
 
             if (health != lastHealth) {
                 lastHealth = health;
@@ -46,6 +58,16 @@ public final class StatChangeTracker {
                 experienceTimer = AutoHideHotbarConfig.experienceShowTicks;
             }
 
+            if (vehicle instanceof LivingEntity) {
+                float vehicleHealth = ((LivingEntity) vehicle).getHealth();
+                if (vehicleHealth != lastVehicleHealth) {
+                    lastVehicleHealth = vehicleHealth;
+                    vehicleHealthTimer = AutoHideHotbarConfig.healthShowTicks;
+                }
+            } else if (lastVehicleHealth != -1.0F) {
+                lastVehicleHealth = -1.0F;
+            }
+
             if (healthTimer > 0) {
                 --healthTimer;
             }
@@ -61,6 +83,10 @@ public final class StatChangeTracker {
             if (experienceTimer > 0) {
                 --experienceTimer;
             }
+
+            if (vehicleHealthTimer > 0) {
+                --vehicleHealthTimer;
+            }
         }
     }
 
@@ -69,13 +95,24 @@ public final class StatChangeTracker {
         return player != null && player.getMaxHealth() == lastHealth;
     }
 
+    private static boolean isMaxVehicleHealth() {
+        LocalPlayer player = Minecraft.getInstance().player;
+        return player != null && player.getControlledVehicle() instanceof LivingEntity && ((LivingEntity) player.getControlledVehicle()).getMaxHealth() == lastVehicleHealth;
+    }
+
+    private static boolean isVehicleJumping() {
+        LocalPlayer player = Minecraft.getInstance().player;
+        return player != null && player.getJumpRidingScale() != 0.0F;
+    }
+
     private static boolean isMaxFood() {
         LocalPlayer player = Minecraft.getInstance().player;
         return player != null && !player.getFoodData().needsFood();
     }
 
     private static boolean isInInventoryUI() {
-        return Minecraft.getInstance().gui.screen() instanceof InventoryScreen;
+        Screen screen = Minecraft.getInstance().gui.screen();
+        return screen instanceof InventoryScreen || screen instanceof AbstractMountInventoryScreen;
     }
 
     private static boolean shouldShowInInventory() {
@@ -96,5 +133,13 @@ public final class StatChangeTracker {
 
     public static boolean shouldShowExperience() {
         return AutoHideHotbarConfig.neverHideExperience || shouldShowInInventory() || experienceTimer > 0;
+    }
+
+    public static boolean shouldShowVehicleHealth() {
+        return AutoHideHotbarConfig.neverHideHealth || shouldShowInInventory() || (AutoHideHotbarConfig.onlyHideWhenFullHealth && !isMaxVehicleHealth()) || vehicleHealthTimer > 0;
+    }
+
+    public static boolean shouldShowJumpBar() {
+        return isVehicleJumping();
     }
 }
