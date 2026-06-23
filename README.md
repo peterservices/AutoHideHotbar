@@ -11,16 +11,20 @@ Automatically hides Minecraft's HUD when not in use to protect OLED displays fro
 
 * Supports both Fabric and NeoForge
 * Hotbar is only visible when switching inventory slots
-* Health bar is only visible when your health changes (Taking damage, regenerating, etc.)
-* Hunger bar is only visible when your hunger changes (Eating, hunger loss, etc.)
-* Armor bar is only visible when your armor changes (Equipping/dequipping, breaking, etc.)
-* XP bar and level is only visible when XP changes (Picking up XP orbs, enchanting, etc.)
-* Hide held item tooltips (Toggle-able in config)
-* Stats (Health, hunger, XP, armor) always show while in the inventory (Legacy text stats mode available in config)
-* Configure timings for how long UI elements are shown before they hide again
-* Configure if health or food should show when not full
-* Configure which UI elements should always show
-* GUI configuration via MidnightLib (bundled with mod)
+* Health bar is only visible when your health changes or when not full
+* Hunger bar is only visible when your hunger changes or when not full
+* Armor bar is only visible when your armor changes
+* XP bar and level is only visible when XP changes
+* Mount jump/dash bar only shows when powering up
+* Hide held item tooltips (Off by default)
+* Stats always show while in the inventory
+* Highly configurable
+  * Configure if held item tooltips should be hidden
+  * Configure if stats should show using a custom text overlay while in the inventory
+  * Configure timings for how long UI elements are shown when they change
+  * Configure if health or hunger should always show when not full
+  * Configure which UI elements should always show
+  * GUI configuration via MidnightLib (bundled with mod)
 
 ### **Download**
 Available on [Modrinth](https://modrinth.com/project/autohidehotbar), [CurseForge](https://www.curseforge.com/minecraft/mc-mods/auto-hide-hotbar), and [GitHub Releases](https://github.com/peterservices/AutoHideHotbar/releases).
