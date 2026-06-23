@@ -4,7 +4,7 @@ import com.github.peterservices.autohidehotbar.config.AutoHideHotbarConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.client.player.LocalPlayer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,7 +18,7 @@ public abstract class InventoryStatsMixin {
             return;
         }
         Minecraft minecraft = Minecraft.getInstance();
-        Player player = minecraft.player;
+        LocalPlayer player = minecraft.player;
         if (player != null) {
             HandledScreenAccessor screen = (HandledScreenAccessor)this;
             int x = screen.getX() + 126;

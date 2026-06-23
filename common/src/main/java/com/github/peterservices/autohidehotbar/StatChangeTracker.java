@@ -65,12 +65,12 @@ public final class StatChangeTracker {
     }
 
     private static boolean isMaxHealth() {
-        Player player = Minecraft.getInstance().player;
+        LocalPlayer player = Minecraft.getInstance().player;
         return player != null && player.getMaxHealth() == lastHealth;
     }
 
     private static boolean isMaxFood() {
-        Player player = Minecraft.getInstance().player;
+        LocalPlayer player = Minecraft.getInstance().player;
         return player != null && !player.getFoodData().needsFood();
     }
 
