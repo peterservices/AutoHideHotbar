@@ -28,7 +28,7 @@ public final class AutoHideHotbarClient implements AutoHideHotbarClientInterface
                 event.setCanceled(true);
             }
         } else if (id.equals(VanillaGuiLayers.CONTEXTUAL_INFO_BAR_BACKGROUND)) {
-            if (!StatChangeTracker.shouldShowExperience()) {
+            if (!StatChangeTracker.shouldShowExperience() && !StatChangeTracker.shouldShowJumpBar()) {
                 event.setCanceled(true);
             }
         } else if (id.equals(VanillaGuiLayers.EXPERIENCE_LEVEL)) {
@@ -45,6 +45,10 @@ public final class AutoHideHotbarClient implements AutoHideHotbarClientInterface
             }
         } else if (id.equals(VanillaGuiLayers.FOOD_LEVEL)) {
             if (!StatChangeTracker.shouldShowFood()) {
+                event.setCanceled(true);
+            }
+        } else if (id.equals(VanillaGuiLayers.VEHICLE_HEALTH)) {
+            if (!StatChangeTracker.shouldShowVehicleHealth()) {
                 event.setCanceled(true);
             }
         }
