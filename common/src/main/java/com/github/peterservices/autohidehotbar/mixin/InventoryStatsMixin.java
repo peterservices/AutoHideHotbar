@@ -10,9 +10,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin({InventoryScreen.class})
+@Mixin(InventoryScreen.class)
 public abstract class InventoryStatsMixin {
-    @Inject(method = {"extractRenderState*"}, at = {@At("TAIL")})
+    @Inject(method = "extractRenderState*", at = @At("TAIL"))
     private void renderStats(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a, CallbackInfo ci) {
         if (!AutoHideHotbarConfig.useCustomStatsDisplay) {
             return;
