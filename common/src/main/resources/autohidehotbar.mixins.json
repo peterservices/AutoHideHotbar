@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_25",
   "client": [
     "HandledScreenAccessor",
-    "InventoryStatsMixin"
+    "HudExtractorMixin",
+    "InventoryStatsMixin",
   ],
   "injectors": {
     "defaultRequire": 1
