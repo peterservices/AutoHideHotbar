@@ -38,12 +38,8 @@ public class HotbarStateTracker {
         });
     }
 
-    private static boolean shouldShowHotbarRaw() {
-        return System.currentTimeMillis() - lastChangeTime < AutoHideHotbarConfig.hotbarShowMilliseconds;
-    }
-
-    public static boolean shouldRender() {
-        return AutoHideHotbarConfig.neverHideHotbar || shouldShowHotbarRaw();
+    public static boolean isHotbarActive() {
+        return System.currentTimeMillis() - lastChangeTime < AutoHideHotbarConfig.hotbarActiveMilliseconds;
     }
 
     private static boolean isInInventoryUI() {
