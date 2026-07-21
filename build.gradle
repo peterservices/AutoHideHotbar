@@ -41,7 +41,7 @@ subprojects {
             url = "https://maven.midnightdust.eu/releases"
         }
         maven {
-            url = "https://maven.terraformersmc.com"
+            url = "https://maven.gnomecraft.net/releases/"
         }
     }
 
