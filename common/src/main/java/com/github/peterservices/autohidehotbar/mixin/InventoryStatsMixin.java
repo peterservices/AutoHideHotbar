@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class InventoryStatsMixin {
     @Inject(method = "extractRenderState*", at = @At("TAIL"))
     private void renderStats(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a, CallbackInfo ci) {
-        if (!AutoHideHotbarConfig.useCustomStatsDisplay) {
+        if (!AutoHideHotbarConfig.showCustomStatsDisplay) {
             return;
         }
         Minecraft minecraft = Minecraft.getInstance();

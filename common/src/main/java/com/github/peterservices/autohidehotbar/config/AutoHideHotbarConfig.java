@@ -5,23 +5,49 @@ import eu.midnightdust.lib.config.MidnightConfig;
 public class AutoHideHotbarConfig extends MidnightConfig {
     public static final String GENERAL = "general";
     public static final String TIMINGS = "timings";
+    public static final String OPACITY = "opacity";
 
-    @Entry(category = GENERAL) public static boolean hideHeldItemTooltips = false;
-    @Entry(category = GENERAL) public static boolean useCustomStatsDisplay = false;
+    public enum ElementInactivityMode {
+        NOTHING, OPACITY, HIDE
+    }
+
+    public enum EffectsHidingMode {
+        NEVER, INFINITE, ALL
+    }
+
+    public enum LocatorBarDisplayMode {
+        SHOW, NOBACKGROUND, HIDE
+    }
+
+    public enum AirSupplyDisplayMode {
+        SHOW, OPACITY, HIDE
+    }
+
+    @Entry(category = GENERAL) public static ElementInactivityMode hotbarInactivityMode = ElementInactivityMode.HIDE;
+    @Entry(category = GENERAL) public static ElementInactivityMode healthInactivityMode = ElementInactivityMode.HIDE;
+    @Entry(category = GENERAL) public static ElementInactivityMode hungerInactivityMode = ElementInactivityMode.HIDE;
+    @Entry(category = GENERAL) public static ElementInactivityMode armorInactivityMode = ElementInactivityMode.HIDE;
+    @Entry(category = GENERAL) public static ElementInactivityMode experienceInactivityMode = ElementInactivityMode.HIDE;
+    @Entry(category = GENERAL) public static LocatorBarDisplayMode locatorBarDisplayMode = LocatorBarDisplayMode.NOBACKGROUND;
+    @Entry(category = GENERAL) public static AirSupplyDisplayMode airSupplyDisplayMode = AirSupplyDisplayMode.OPACITY;
+    @Entry(category = GENERAL) public static EffectsHidingMode effectsHidingMode = EffectsHidingMode.NEVER;
     @Comment(category = GENERAL) public static Comment spacer1;
-    @Entry(category = GENERAL) public static boolean onlyHideWhenFullHealth = true;
-    @Entry(category = GENERAL) public static boolean onlyHideWhenFullFood = true;
+    @Entry(category = GENERAL) public static boolean alwaysActiveWhenNotFullHealth = true;
+    @Entry(category = GENERAL) public static boolean alwaysActiveWhenNotFullHunger = true;
     @Comment(category = GENERAL) public static Comment spacer2;
-    @Entry(category = GENERAL) public static boolean neverHideHotbar = false;;
-    @Entry(category = GENERAL) public static boolean neverHideHealth = false;
-    @Entry(category = GENERAL) public static boolean neverHideFood = false;
-    @Entry(category = GENERAL) public static boolean neverHideArmor = false;
-    @Entry(category = GENERAL) public static boolean neverHideExperience = false;
+    @Entry(category = GENERAL) public static boolean showHeldItemTooltips = true;
+    @Entry(category = GENERAL) public static boolean showCustomStatsDisplay = false;
 
-    @Entry(category = TIMINGS, min = 0) public static int hotbarShowMilliseconds = 1500;
-    @Entry(category = TIMINGS, min = 0) public static int healthShowTicks = 40;
-    @Entry(category = TIMINGS, min = 0) public static int foodShowTicks = 30;
-    @Entry(category = TIMINGS, min = 0) public static int armorShowTicks = 30;
-    @Entry(category = TIMINGS, min = 0) public static int experienceShowTicks = 30;
+    @Entry(category = TIMINGS, min = 0) public static int hotbarActiveMilliseconds = 1500;
+    @Entry(category = TIMINGS, min = 0) public static int healthActiveTicks = 40;
+    @Entry(category = TIMINGS, min = 0) public static int foodActiveTicks = 30;
+    @Entry(category = TIMINGS, min = 0) public static int armorActiveTicks = 30;
+    @Entry(category = TIMINGS, min = 0) public static int experienceActiveTicks = 30;
     @Comment(category = TIMINGS, centered = true) public static Comment timingsComment;
+
+    @Comment(category = OPACITY, centered = true) public static Comment opacityComment;
+    @Entry(category = OPACITY, isSlider = true, min = 0F, max = 1F) public static float hotbarBackgroundOpacity = 1F;
+    @Entry(category = OPACITY, isSlider = true, min = 0F, max = 1F) public static float hotbarSelectionOpacity = 1F;
+    @Entry(category = OPACITY, isSlider = true, min = 0F, max = 1F) public static float hotbarStatsOpacity = 1F;
+    @Entry(category = OPACITY, isSlider = true, min = 0F, max = 1F) public static float effectsBackgroundOpacity = 1F;
 }
