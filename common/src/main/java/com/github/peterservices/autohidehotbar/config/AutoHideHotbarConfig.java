@@ -16,7 +16,7 @@ public class AutoHideHotbarConfig extends MidnightConfig {
     }
 
     public enum LocatorBarDisplayMode {
-        SHOW, NOBACKGROUND, HIDE
+        SHOW, OPACITY, NOBACKGROUND, OPACITYANDNOBACKGROUND, HIDE
     }
 
     public enum AirSupplyDisplayMode {
