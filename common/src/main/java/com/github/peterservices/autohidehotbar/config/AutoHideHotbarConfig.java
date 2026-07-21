@@ -12,7 +12,7 @@ public class AutoHideHotbarConfig extends MidnightConfig {
     }
 
     public enum EffectsHidingMode {
-        NEVER, INFINITE, ALL
+        NEVER, AMBIENT, INFINITE, AMBIENTANDINFINITE, ALL
     }
 
     public enum LocatorBarDisplayMode {
