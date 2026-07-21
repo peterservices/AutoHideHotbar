@@ -39,7 +39,7 @@ public abstract class HudExtractorMixin {
     @Final
     private static Identifier HOTBAR_OFFHAND_RIGHT_SPRITE;
 
-    // Hide or apply opacity to effect backgrounds
+    // Apply opacity to or hide effect backgrounds
     @WrapOperation(method = "extractEffects", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
     private void onExtractEffectBackground(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original, @Local(name = "instance") MobEffectInstance effectInstance) {
         if (AutoHideHotbarConfig.effectsHidingMode == AutoHideHotbarConfig.EffectsHidingMode.ALL) {
@@ -68,7 +68,7 @@ public abstract class HudExtractorMixin {
         original.call(instance, renderPipeline, location, x, y, width, height, color);
     }
 
-    // Apply opacity to hotbar background and selection sprites
+    // Apply opacity to or hide hotbar background and selection sprites
     @WrapOperation(method = "extractItemHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
     private void onExtractItemHotbar(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
         if (!HotbarStateTracker.isHotbarActive()) {
@@ -99,7 +99,7 @@ public abstract class HudExtractorMixin {
         original.call(instance, renderPipeline, location, x, y, width, height);
     }
 
-    // Apply opacity to armor
+    // Apply opacity to or hide armor
     @WrapOperation(method = "extractArmor", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
     private static void onExtractArmor(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
         if (!StatChangeTracker.isArmorActive()) {
@@ -120,7 +120,7 @@ public abstract class HudExtractorMixin {
         }
     }
 
-    // Apply opacity to health
+    // Apply opacity to or hide health
     @WrapOperation(method = "extractHeart", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
     private static void onExtractHearts(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
         if (!StatChangeTracker.isHealthActive()) {
@@ -141,7 +141,7 @@ public abstract class HudExtractorMixin {
         }
     }
 
-    // Apply opacity to air bubbles
+    // Apply opacity to or hide air bubbles
     @WrapOperation(method = "extractAirBubbles", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
     private static void onExtractAirBubbles(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
         switch (AutoHideHotbarConfig.airSupplyDisplayMode) {
@@ -156,7 +156,7 @@ public abstract class HudExtractorMixin {
         original.call(instance, renderPipeline, location, x, y, width, height);
     }
 
-    // Apply opacity to hunger
+    // Apply opacity to or hide hunger
     @WrapOperation(method = "extractFood", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
     private static void onExtractFood(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
         if (!StatChangeTracker.isHungerActive()) {
@@ -177,7 +177,7 @@ public abstract class HudExtractorMixin {
         }
     }
 
-    // Apply opacity to vehicle health
+    // Apply opacity to or hide vehicle health
     @WrapOperation(method = "extractVehicleHealth", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
     private static void onExtractVehicleHealth(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
         if (!StatChangeTracker.isVehicleHealthActive()) {
