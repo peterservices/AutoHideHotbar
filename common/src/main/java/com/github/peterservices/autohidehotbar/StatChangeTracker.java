@@ -16,6 +16,7 @@ public final class StatChangeTracker {
     private static int lastArmor = -1;
     private static int lastExperience = -1;
     private static int lastExperienceLevel = -1;
+
     private static int healthTimer = 0;
     private static int foodTimer = 0;
     private static int armorTimer = 0;
@@ -40,30 +41,30 @@ public final class StatChangeTracker {
 
             if (health != lastHealth) {
                 lastHealth = health;
-                healthTimer = AutoHideHotbarConfig.healthShowTicks;
+                healthTimer = AutoHideHotbarConfig.healthActiveTicks;
             }
 
             if (food != lastFood) {
                 lastFood = food;
-                foodTimer = AutoHideHotbarConfig.foodShowTicks;
+                foodTimer = AutoHideHotbarConfig.foodActiveTicks;
             }
 
             if (armor != lastArmor) {
                 lastArmor = armor;
-                armorTimer = AutoHideHotbarConfig.armorShowTicks;
+                armorTimer = AutoHideHotbarConfig.armorActiveTicks;
             }
 
             if (experience != lastExperience || experienceLevel != lastExperienceLevel) {
                 lastExperience = experience;
                 lastExperienceLevel = experienceLevel;
-                experienceTimer = AutoHideHotbarConfig.experienceShowTicks;
+                experienceTimer = AutoHideHotbarConfig.experienceActiveTicks;
             }
 
             if (vehicle instanceof LivingEntity) {
                 float vehicleHealth = ((LivingEntity) vehicle).getHealth();
                 if (vehicleHealth != lastVehicleHealth) {
                     lastVehicleHealth = vehicleHealth;
-                    vehicleHealthTimer = AutoHideHotbarConfig.healthShowTicks;
+                    vehicleHealthTimer = AutoHideHotbarConfig.healthActiveTicks;
                 }
             } else if (lastVehicleHealth != -1.0F) {
                 lastVehicleHealth = -1.0F;
@@ -96,7 +97,7 @@ public final class StatChangeTracker {
         return player != null && player.getMaxHealth() == lastHealth;
     }
 
-    private static boolean isMaxVehicleHealth() {
+    private static boolean isVehicleMaxHealth() {
         LocalPlayer player = Minecraft.getInstance().player;
         return player != null && player.getControlledVehicle() instanceof LivingEntity && ((LivingEntity) player.getControlledVehicle()).getMaxHealth() == lastVehicleHealth;
     }
@@ -106,7 +107,7 @@ public final class StatChangeTracker {
         return player != null && player.getJumpRidingScale() != 0.0F;
     }
 
-    private static boolean isMaxFood() {
+    private static boolean isMaxHunger() {
         LocalPlayer player = Minecraft.getInstance().player;
         return player != null && !player.getFoodData().needsFood();
     }
@@ -116,31 +117,31 @@ public final class StatChangeTracker {
         return screen instanceof InventoryScreen || screen instanceof AbstractMountInventoryScreen;
     }
 
-    private static boolean shouldShowInInventory() {
-        return isInInventoryUI() && !AutoHideHotbarConfig.useCustomStatsDisplay;
+    private static boolean isActiveInInventoryUI() {
+        return isInInventoryUI() && !AutoHideHotbarConfig.showCustomStatsDisplay;
     }
 
-    public static boolean shouldShowHealth() {
-        return AutoHideHotbarConfig.neverHideHealth || shouldShowInInventory() || (AutoHideHotbarConfig.onlyHideWhenFullHealth && !isMaxHealth()) || healthTimer > 0;
+    public static boolean isHealthActive() {
+        return isActiveInInventoryUI() || (AutoHideHotbarConfig.alwaysActiveWhenNotFullHealth && !isMaxHealth()) || healthTimer > 0;
     }
 
-    public static boolean shouldShowFood() {
-        return AutoHideHotbarConfig.neverHideFood || shouldShowInInventory() || (AutoHideHotbarConfig.onlyHideWhenFullFood && !isMaxFood()) || foodTimer > 0;
+    public static boolean isHungerActive() {
+        return isActiveInInventoryUI() || (AutoHideHotbarConfig.alwaysActiveWhenNotFullHunger && !isMaxHunger()) || foodTimer > 0;
     }
 
-    public static boolean shouldShowArmor() {
-        return AutoHideHotbarConfig.neverHideArmor || shouldShowInInventory() || armorTimer > 0;
+    public static boolean isArmorActive() {
+        return isActiveInInventoryUI() || armorTimer > 0;
     }
 
-    public static boolean shouldShowExperience() {
-        return AutoHideHotbarConfig.neverHideExperience || shouldShowInInventory() || experienceTimer > 0;
+    public static boolean isExperienceActive() {
+        return isActiveInInventoryUI() || experienceTimer > 0;
     }
 
-    public static boolean shouldShowVehicleHealth() {
-        return AutoHideHotbarConfig.neverHideHealth || shouldShowInInventory() || (AutoHideHotbarConfig.onlyHideWhenFullHealth && !isMaxVehicleHealth()) || vehicleHealthTimer > 0;
+    public static boolean isVehicleHealthActive() {
+        return isActiveInInventoryUI() || (AutoHideHotbarConfig.alwaysActiveWhenNotFullHealth && !isVehicleMaxHealth()) || vehicleHealthTimer > 0;
     }
 
-    public static boolean shouldShowJumpBar() {
+    public static boolean isJumpBarActive() {
         return isVehicleJumping();
     }
 }
