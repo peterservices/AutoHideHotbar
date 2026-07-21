@@ -44,7 +44,9 @@ public abstract class HudExtractorMixin {
     private void onExtractEffectBackground(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original, @Local(name = "instance") MobEffectInstance effectInstance) {
         if (AutoHideHotbarConfig.effectsHidingMode == AutoHideHotbarConfig.EffectsHidingMode.ALL) {
             return;
-        } else if (AutoHideHotbarConfig.effectsHidingMode == AutoHideHotbarConfig.EffectsHidingMode.INFINITE && effectInstance.isInfiniteDuration()) {
+        } else if (List.of(AutoHideHotbarConfig.EffectsHidingMode.AMBIENT, AutoHideHotbarConfig.EffectsHidingMode.AMBIENTANDINFINITE).contains(AutoHideHotbarConfig.effectsHidingMode) && effectInstance.isAmbient()) {
+            return;
+        } else if (List.of(AutoHideHotbarConfig.EffectsHidingMode.INFINITE, AutoHideHotbarConfig.EffectsHidingMode.AMBIENTANDINFINITE).contains(AutoHideHotbarConfig.effectsHidingMode) && effectInstance.isInfiniteDuration()) {
             return;
         }
         instance.blitSprite(renderPipeline, location, x, y, width, height, ARGB.white(AutoHideHotbarConfig.effectsBackgroundOpacity));
@@ -56,7 +58,8 @@ public abstract class HudExtractorMixin {
         MobEffect effect = effectInstance.getEffect().value();
         if (AutoHideHotbarConfig.effectsHidingMode == AutoHideHotbarConfig.EffectsHidingMode.ALL) {
             return;
-        } else if (AutoHideHotbarConfig.effectsHidingMode == AutoHideHotbarConfig.EffectsHidingMode.INFINITE && effectInstance.isInfiniteDuration()) {
+        } else if ((List.of(AutoHideHotbarConfig.EffectsHidingMode.AMBIENT, AutoHideHotbarConfig.EffectsHidingMode.AMBIENTANDINFINITE).contains(AutoHideHotbarConfig.effectsHidingMode) && effectInstance.isAmbient())
+                || (List.of(AutoHideHotbarConfig.EffectsHidingMode.INFINITE, AutoHideHotbarConfig.EffectsHidingMode.AMBIENTANDINFINITE).contains(AutoHideHotbarConfig.effectsHidingMode) && effectInstance.isInfiniteDuration())) {
             // Decrement respective counter for hidden effects so the next visible effect is not shifted over
             if (effect.isBeneficial()) {
                 beneficialCountRef.set(beneficialCountRef.get() - 1);
