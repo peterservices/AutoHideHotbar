@@ -4,9 +4,13 @@
   "package": "com.github.peterservices.autohidehotbar.mixin",
   "compatibilityLevel": "JAVA_25",
   "client": [
+    "ContextualBarMixin",
+    "ExperienceBarMixin",
     "HandledScreenAccessor",
     "HudExtractorMixin",
     "InventoryStatsMixin",
+    "JumpableVehicleBarMixin",
+    "LocatorBarMixin"
   ],
   "injectors": {
     "defaultRequire": 1
