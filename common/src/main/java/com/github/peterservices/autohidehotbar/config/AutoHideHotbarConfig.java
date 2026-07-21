@@ -29,7 +29,7 @@ public class AutoHideHotbarConfig extends MidnightConfig {
     @Entry(category = GENERAL) public static ElementInactivityMode armorInactivityMode = ElementInactivityMode.HIDE;
     @Entry(category = GENERAL) public static ElementInactivityMode experienceInactivityMode = ElementInactivityMode.HIDE;
     @Entry(category = GENERAL) public static LocatorBarDisplayMode locatorBarDisplayMode = LocatorBarDisplayMode.NOBACKGROUND;
-    @Entry(category = GENERAL) public static AirSupplyDisplayMode airSupplyDisplayMode = AirSupplyDisplayMode.OPACITY;
+    @Entry(category = GENERAL) public static AirSupplyDisplayMode airSupplyDisplayMode = AirSupplyDisplayMode.SHOW;
     @Entry(category = GENERAL) public static EffectsHidingMode effectsHidingMode = EffectsHidingMode.NEVER;
     @Comment(category = GENERAL) public static Comment spacer1;
     @Entry(category = GENERAL) public static boolean alwaysActiveWhenNotFullHealth = true;
