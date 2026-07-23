@@ -6,11 +6,6 @@ import com.github.peterservices.autohidehotbar.config.AutoHideHotbarConfig;
 import dev.architectury.event.events.client.ClientTickEvent;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.screens.inventory.AbstractFurnaceScreen;
-import net.minecraft.client.gui.screens.inventory.AbstractMountInventoryScreen;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.world.item.Item;
 
 public class HotbarStateTracker {
@@ -27,12 +22,10 @@ public class HotbarStateTracker {
                     lastChangeTime = System.currentTimeMillis();
                 }
 
-                if (isInInventoryUI()) {
-                    Item[] hotbarItems = getHotbarItems(client);
-                    if (!Arrays.equals(hotbarItems, lastHotbarItems)) {
-                        lastHotbarItems = hotbarItems;
-                        lastChangeTime = System.currentTimeMillis();
-                    }
+                Item[] hotbarItems = getHotbarItems(client);
+                if (!Arrays.equals(hotbarItems, lastHotbarItems)) {
+                    lastHotbarItems = hotbarItems;
+                    lastChangeTime = System.currentTimeMillis();
                 }
             }
         });
@@ -46,18 +39,10 @@ public class HotbarStateTracker {
         return AutoHideHotbarConfig.neverHideHotbar || shouldShowHotbarRaw();
     }
 
-    private static boolean isInInventoryUI() {
-        Screen screen = Minecraft.getInstance().gui.screen();
-        return (screen instanceof InventoryScreen 
-            || screen instanceof AbstractMountInventoryScreen 
-            || screen instanceof AbstractContainerScreen
-            || screen instanceof AbstractFurnaceScreen);
-    }
-
     private static Item[] getHotbarItems(Minecraft client) {
         Item[] hotbarItems = new Item[9];
         for (int i = 0; i < 9; i++) {
-            hotbarItems[i] = client.player.getInventory().getSlot(i).get().getItem();
+            hotbarItems[i] = client.player.getInventory().getItem(i).getItem();
         }
         return hotbarItems;
     }
