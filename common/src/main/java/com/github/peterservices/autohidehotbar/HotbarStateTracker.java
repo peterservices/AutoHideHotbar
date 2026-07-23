@@ -1,12 +1,10 @@
 package com.github.peterservices.autohidehotbar;
 
-import java.util.Arrays;
-
 import com.github.peterservices.autohidehotbar.config.AutoHideHotbarConfig;
 import dev.architectury.event.events.client.ClientTickEvent;
-
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.item.Item;
+import java.util.Arrays;
 
 public class HotbarStateTracker {
     private static int lastSlot = -1;
@@ -22,7 +20,7 @@ public class HotbarStateTracker {
                     lastChangeTime = System.currentTimeMillis();
                 }
 
-                Item[] hotbarItems = getHotbarItems(client);
+                Item[] hotbarItems = getHotbarItems(client.player);
                 if (!Arrays.equals(hotbarItems, lastHotbarItems)) {
                     lastHotbarItems = hotbarItems;
                     lastChangeTime = System.currentTimeMillis();
@@ -35,10 +33,10 @@ public class HotbarStateTracker {
         return System.currentTimeMillis() - lastChangeTime < AutoHideHotbarConfig.hotbarActiveMilliseconds;
     }
 
-    private static Item[] getHotbarItems(Minecraft client) {
+    private static Item[] getHotbarItems(LocalPlayer player) {
         Item[] hotbarItems = new Item[9];
         for (int i = 0; i < 9; i++) {
-            hotbarItems[i] = client.player.getInventory().getItem(i).getItem();
+            hotbarItems[i] = player.getInventory().getItem(i).getItem();
         }
         return hotbarItems;
     }
