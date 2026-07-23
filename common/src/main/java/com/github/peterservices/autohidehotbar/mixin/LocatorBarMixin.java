@@ -5,7 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.contextualbar.LocatorBar;
+import net.minecraft.client.gui.contextualbar.LocatorBarRenderer;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 import java.util.List;
 
-@Mixin(LocatorBar.class)
+@Mixin(LocatorBarRenderer.class)
 public class LocatorBarMixin {
     @WrapOperation(method = "extractBackground", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
     private void onExtractBackground(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {

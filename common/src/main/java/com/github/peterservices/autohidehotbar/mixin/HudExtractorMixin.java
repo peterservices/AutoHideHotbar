@@ -9,7 +9,7 @@ import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.ref.LocalIntRef;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.Hud;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import net.minecraft.world.effect.MobEffect;
@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 import java.util.List;
 
-@Mixin(Hud.class)
+@Mixin(Gui.class)
 public abstract class HudExtractorMixin {
     @Shadow
     @Final
