@@ -19,36 +19,12 @@ public final class AutoHideHotbarClient implements AutoHideHotbarClientInterface
     public static void onRenderGuiLayer(RenderGuiLayerEvent.Pre event) {
         Identifier id = event.getName();
 
-        if (id.equals(VanillaGuiLayers.HOTBAR)) {
-            if (!HotbarStateTracker.shouldRender()) {
+        if (id.equals(VanillaGuiLayers.SELECTED_ITEM_NAME)) {
+            if (!AutoHideHotbarConfig.showHeldItemTooltips) {
                 event.setCanceled(true);
             }
-        } else if (id.equals(VanillaGuiLayers.SELECTED_ITEM_NAME)) {
-            if (AutoHideHotbarConfig.hideHeldItemTooltips) {
-                event.setCanceled(true);
-            }
-        } else if (id.equals(VanillaGuiLayers.CONTEXTUAL_INFO_BAR_BACKGROUND)) {
-            if (!StatChangeTracker.shouldShowExperience() && !StatChangeTracker.shouldShowJumpBar()) {
-                event.setCanceled(true);
-            }
-        } else if (id.equals(VanillaGuiLayers.EXPERIENCE_LEVEL)) {
-            if (!StatChangeTracker.shouldShowExperience()) {
-                event.setCanceled(true);
-            }
-        } else if (id.equals(VanillaGuiLayers.PLAYER_HEALTH)) {
-            if (!StatChangeTracker.shouldShowHealth()) {
-                event.setCanceled(true);
-            }
-        } else if (id.equals(VanillaGuiLayers.ARMOR_LEVEL)) {
-            if (!StatChangeTracker.shouldShowArmor()) {
-                event.setCanceled(true);
-            }
-        } else if (id.equals(VanillaGuiLayers.FOOD_LEVEL)) {
-            if (!StatChangeTracker.shouldShowFood()) {
-                event.setCanceled(true);
-            }
-        } else if (id.equals(VanillaGuiLayers.VEHICLE_HEALTH)) {
-            if (!StatChangeTracker.shouldShowVehicleHealth()) {
+        } else if (id.equals(VanillaGuiLayers.HOTBAR)) {
+            if (!HotbarStateTracker.isHotbarActive() && AutoHideHotbarConfig.hotbarInactivityMode == AutoHideHotbarConfig.ElementInactivityMode.HIDE) {
                 event.setCanceled(true);
             }
         }

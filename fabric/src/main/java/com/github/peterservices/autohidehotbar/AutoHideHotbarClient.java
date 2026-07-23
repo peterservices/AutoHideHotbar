@@ -9,43 +9,13 @@ public final class AutoHideHotbarClient implements AutoHideHotbarClientInterface
     public void onInitializeClient() {
         AutoHideHotbarClientInterface.initClient();
 
-        HudElementRegistry.replaceElement(VanillaHudElements.HOTBAR, (original) -> (ctx, tick) -> {
-            if (HotbarStateTracker.shouldRender()) {
-                original.extractRenderState(ctx, tick);
-            }
-        });
         HudElementRegistry.replaceElement(VanillaHudElements.HELD_ITEM_TOOLTIP, (original) -> (ctx, tick) -> {
-            if (!AutoHideHotbarConfig.hideHeldItemTooltips) {
+            if (AutoHideHotbarConfig.showHeldItemTooltips) {
                 original.extractRenderState(ctx, tick);
             }
         });
-        HudElementRegistry.replaceElement(VanillaHudElements.INFO_BAR, (original) -> (ctx, tick) -> {
-            if (StatChangeTracker.shouldShowExperience() || StatChangeTracker.shouldShowJumpBar()) {
-                original.extractRenderState(ctx, tick);
-            }
-        });
-        HudElementRegistry.replaceElement(VanillaHudElements.EXPERIENCE_LEVEL, (original) -> (ctx, tick) -> {
-            if (StatChangeTracker.shouldShowExperience()) {
-                original.extractRenderState(ctx, tick);
-            }
-        });
-        HudElementRegistry.replaceElement(VanillaHudElements.HEALTH_BAR, (original) -> (ctx, tick) -> {
-            if (StatChangeTracker.shouldShowHealth()) {
-                original.extractRenderState(ctx, tick);
-            }
-        });
-        HudElementRegistry.replaceElement(VanillaHudElements.ARMOR_BAR, (original) -> (ctx, tick) -> {
-            if (StatChangeTracker.shouldShowArmor()) {
-                original.extractRenderState(ctx, tick);
-            }
-        });
-        HudElementRegistry.replaceElement(VanillaHudElements.FOOD_BAR, (original) -> (ctx, tick) -> {
-            if (StatChangeTracker.shouldShowFood()) {
-                original.extractRenderState(ctx, tick);
-            }
-        });
-        HudElementRegistry.replaceElement(VanillaHudElements.MOUNT_HEALTH, (original) -> (ctx, tick) -> {
-            if (StatChangeTracker.shouldShowVehicleHealth()) {
+        HudElementRegistry.replaceElement(VanillaHudElements.HOTBAR, (original) -> (ctx, tick) -> {
+            if (HotbarStateTracker.isHotbarActive() || AutoHideHotbarConfig.hotbarInactivityMode != AutoHideHotbarConfig.ElementInactivityMode.HIDE) {
                 original.extractRenderState(ctx, tick);
             }
         });
