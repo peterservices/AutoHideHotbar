@@ -122,11 +122,11 @@ public final class StatChangeTracker {
     }
 
     public static boolean isHealthActive() {
-        return isActiveInInventoryUI() || isHealthBelowPercent() || healthTimer > 0;
+        return isActiveInInventoryUI() || isHealthBelowPercent() || (AutoHideHotbarConfig.healthActivityTrigger == AutoHideHotbarConfig.ElementActivityTrigger.ALL && healthTimer > 0);
     }
 
     public static boolean isHungerActive() {
-        return isActiveInInventoryUI() || isHungerBelowPercent() || foodTimer > 0;
+        return isActiveInInventoryUI() || isHungerBelowPercent() || (AutoHideHotbarConfig.hungerActivityTrigger == AutoHideHotbarConfig.ElementActivityTrigger.ALL && foodTimer > 0);
     }
 
     public static boolean isArmorActive() {
@@ -138,7 +138,7 @@ public final class StatChangeTracker {
     }
 
     public static boolean isVehicleHealthActive() {
-        return isActiveInInventoryUI() || isVehicleHealthBelowPercent() || vehicleHealthTimer > 0;
+        return isActiveInInventoryUI() || isVehicleHealthBelowPercent() || (AutoHideHotbarConfig.healthActivityTrigger == AutoHideHotbarConfig.ElementActivityTrigger.ALL && vehicleHealthTimer > 0);
     }
 
     public static boolean isJumpBarActive() {
