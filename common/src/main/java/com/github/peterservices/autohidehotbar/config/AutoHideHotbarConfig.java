@@ -23,6 +23,10 @@ public class AutoHideHotbarConfig extends MidnightConfig {
         SHOW, OPACITY, HIDE
     }
 
+    public enum ElementActivityTrigger {
+        ALL, BELOWPERCENT
+    }
+
     @Entry(category = GENERAL) public static ElementInactivityMode hotbarInactivityMode = ElementInactivityMode.HIDE;
     @Entry(category = GENERAL) public static ElementInactivityMode healthInactivityMode = ElementInactivityMode.HIDE;
     @Entry(category = GENERAL) public static ElementInactivityMode hungerInactivityMode = ElementInactivityMode.HIDE;
@@ -34,6 +38,8 @@ public class AutoHideHotbarConfig extends MidnightConfig {
     @Comment(category = GENERAL) public static Comment spacer1;
     @Entry(category = GENERAL, isSlider = true, min = 0, max = 100) public static int activeWhenHealthFallsBelowPercent = 100;
     @Entry(category = GENERAL, isSlider = true, min = 0, max = 100) public static int activeWhenHungerFallsBelowPercent = 100;
+    @Entry(category = GENERAL) public static ElementActivityTrigger healthActivityTrigger = ElementActivityTrigger.ALL;
+    @Entry(category = GENERAL) public static ElementActivityTrigger hungerActivityTrigger = ElementActivityTrigger.ALL;
     @Comment(category = GENERAL) public static Comment spacer2;
     @Entry(category = GENERAL) public static boolean showHeldItemTooltips = true;
     @Entry(category = GENERAL) public static boolean showCustomStatsDisplay = false;
