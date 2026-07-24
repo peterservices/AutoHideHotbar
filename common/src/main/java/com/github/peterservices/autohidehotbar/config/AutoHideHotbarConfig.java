@@ -32,8 +32,8 @@ public class AutoHideHotbarConfig extends MidnightConfig {
     @Entry(category = GENERAL) public static AirSupplyDisplayMode airSupplyDisplayMode = AirSupplyDisplayMode.SHOW;
     @Entry(category = GENERAL) public static EffectsHidingMode effectsHidingMode = EffectsHidingMode.NEVER;
     @Comment(category = GENERAL) public static Comment spacer1;
-    @Entry(category = GENERAL) public static boolean alwaysActiveWhenNotFullHealth = true;
-    @Entry(category = GENERAL) public static boolean alwaysActiveWhenNotFullHunger = true;
+    @Entry(category = GENERAL, isSlider = true, min = 0, max = 100) public static int activeWhenHealthFallsBelowPercent = 100;
+    @Entry(category = GENERAL, isSlider = true, min = 0, max = 100) public static int activeWhenHungerFallsBelowPercent = 100;
     @Comment(category = GENERAL) public static Comment spacer2;
     @Entry(category = GENERAL) public static boolean showHeldItemTooltips = true;
     @Entry(category = GENERAL) public static boolean showCustomStatsDisplay = false;

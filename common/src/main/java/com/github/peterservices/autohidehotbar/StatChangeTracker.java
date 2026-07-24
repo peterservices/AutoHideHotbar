@@ -92,14 +92,14 @@ public final class StatChangeTracker {
         }
     }
 
-    private static boolean isMaxHealth() {
+    private static boolean isHealthBelowPercent() {
         LocalPlayer player = Minecraft.getInstance().player;
-        return player != null && player.getMaxHealth() == lastHealth;
+        return player != null && player.getMaxHealth() * (AutoHideHotbarConfig.activeWhenHealthFallsBelowPercent / 100F) > lastHealth;
     }
 
-    private static boolean isVehicleMaxHealth() {
+    private static boolean isVehicleHealthBelowPercent() {
         LocalPlayer player = Minecraft.getInstance().player;
-        return player != null && player.getControlledVehicle() instanceof LivingEntity && ((LivingEntity) player.getControlledVehicle()).getMaxHealth() == lastVehicleHealth;
+        return player != null && player.getControlledVehicle() instanceof LivingEntity && ((LivingEntity) player.getControlledVehicle()).getMaxHealth() * (AutoHideHotbarConfig.activeWhenHealthFallsBelowPercent / 100F) > lastVehicleHealth;
     }
 
     private static boolean isVehicleJumping() {
@@ -107,9 +107,9 @@ public final class StatChangeTracker {
         return player != null && player.getJumpRidingScale() != 0.0F;
     }
 
-    private static boolean isMaxHunger() {
+    private static boolean isHungerBelowPercent() {
         LocalPlayer player = Minecraft.getInstance().player;
-        return player != null && !player.getFoodData().needsFood();
+        return player != null && 20 * (AutoHideHotbarConfig.activeWhenHungerFallsBelowPercent / 100F) > lastFood;
     }
 
     private static boolean isInInventoryUI() {
@@ -122,11 +122,11 @@ public final class StatChangeTracker {
     }
 
     public static boolean isHealthActive() {
-        return isActiveInInventoryUI() || (AutoHideHotbarConfig.alwaysActiveWhenNotFullHealth && !isMaxHealth()) || healthTimer > 0;
+        return isActiveInInventoryUI() || isHealthBelowPercent() || healthTimer > 0;
     }
 
     public static boolean isHungerActive() {
-        return isActiveInInventoryUI() || (AutoHideHotbarConfig.alwaysActiveWhenNotFullHunger && !isMaxHunger()) || foodTimer > 0;
+        return isActiveInInventoryUI() || isHungerBelowPercent() || foodTimer > 0;
     }
 
     public static boolean isArmorActive() {
@@ -138,7 +138,7 @@ public final class StatChangeTracker {
     }
 
     public static boolean isVehicleHealthActive() {
-        return isActiveInInventoryUI() || (AutoHideHotbarConfig.alwaysActiveWhenNotFullHealth && !isVehicleMaxHealth()) || vehicleHealthTimer > 0;
+        return isActiveInInventoryUI() || isVehicleHealthBelowPercent() || vehicleHealthTimer > 0;
     }
 
     public static boolean isJumpBarActive() {
