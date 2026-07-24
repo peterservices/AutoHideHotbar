@@ -23,7 +23,8 @@ Automatically dims or hides Minecraft's HUD when not in use to protect OLED disp
   * Configure if held item tooltips should be hidden
   * Configure if stats should show using a custom text overlay while in the inventory
   * Configure timings for how long UI elements are considered active
-  * Configure if health or hunger should always be active when not full
+  * Configure the percentage of health or hunger that should activate their respective HUD elements
+  * Configure if health or hunger should **only** show when below the specified percentage, and not when it changes
   * GUI configuration via MidnightLib (bundled with mod)
 
 ### **Download**
