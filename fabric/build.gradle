@@ -46,6 +46,8 @@ processResources {
     inputs.property 'author', rootProject.author
     inputs.property 'credits', rootProject.credits
     inputs.property 'license', rootProject.license
+    inputs.property 'source', rootProject.source
+    inputs.property 'issue_tracker', rootProject.issue_tracker
     inputs.property 'fabric_loader_minimum', rootProject.fabric_loader_minimum
     inputs.property 'minecraft_minimum', rootProject.minecraft_minimum
     inputs.property 'architectury_minimum', rootProject.architectury_minimum

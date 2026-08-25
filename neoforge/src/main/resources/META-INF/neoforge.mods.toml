@@ -1,6 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "${loader_range}"
-#issueTrackerURL = ""
+issueTrackerURL = "${issue_tracker}"
 license = "${license}"
 
 [[mods]]
@@ -9,6 +9,7 @@ version = "${version}"
 displayName = "${display_name}"
 authors = "${author}, ${credits}"
 description = "${description}"
+modUrl = "${source}"
 logoFile = "assets/autohidehotbar/icon.png"
 
 [[dependencies.autohidehotbar]]

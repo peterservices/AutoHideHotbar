@@ -4,8 +4,14 @@
   "version": "${version}",
   "name": "${display_name}",
   "description": "${description}",
-  "authors": ["${author}", "${credits}"],
-  "contact": {},
+  "authors": [
+    "${author}",
+    "${credits}"
+  ],
+  "contact": {
+    "issues": "${issue_tracker}",
+    "sources": "${source}"
+  },
   "license": "${license}",
   "icon": "assets/autohidehotbar/icon.png",
   "environment": "client",
