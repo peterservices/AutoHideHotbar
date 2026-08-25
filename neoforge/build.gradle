@@ -50,6 +50,8 @@ processResources {
     inputs.property 'author', rootProject.author
     inputs.property 'credits', rootProject.credits
     inputs.property 'license', rootProject.license
+    inputs.property 'source', rootProject.source
+    inputs.property 'issue_tracker', rootProject.issue_tracker
     inputs.property 'loader_range', rootProject.loader_range
     inputs.property 'minecraft_range', rootProject.minecraft_range
     inputs.property 'neoforge_range', rootProject.neoforge_range
