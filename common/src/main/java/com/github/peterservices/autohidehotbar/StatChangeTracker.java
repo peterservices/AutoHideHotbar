@@ -24,6 +24,7 @@ public final class StatChangeTracker {
 
     // Vehicle stats
     private static float lastVehicleHealth = -1.0F;
+
     private static int vehicleHealthTimer = 0;
 
     public static void tick(Minecraft client) {
