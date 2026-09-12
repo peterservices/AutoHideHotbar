@@ -27,7 +27,7 @@
     "fabricloader": ">=${fabric_loader_minimum}",
     "fabric-api": "*",
     "minecraft": "~${minecraft_minimum}",
-    "architectury": "~${architectury_minimum}"
+    "architectury": "^${architectury_minimum}"
   },
   "custom": {
     "mc-publish": {
