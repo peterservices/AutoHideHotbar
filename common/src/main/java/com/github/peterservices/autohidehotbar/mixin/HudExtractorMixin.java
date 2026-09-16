@@ -7,7 +7,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.ref.LocalIntRef;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
+import com.mojang.renderpearl.api.pipeline.RenderPipeline;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.Hud;
 import net.minecraft.resources.Identifier;
@@ -40,7 +40,7 @@ public abstract class HudExtractorMixin {
     private static Identifier HOTBAR_OFFHAND_RIGHT_SPRITE;
 
     // Apply opacity to or hide effect backgrounds
-    @WrapOperation(method = "extractEffects", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
+    @WrapOperation(method = "extractEffects", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/renderpearl/api/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
     private void onExtractEffectBackground(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original, @Local(name = "instance") MobEffectInstance effectInstance) {
         if (AutoHideHotbarConfig.effectsHidingMode == AutoHideHotbarConfig.EffectsHidingMode.ALL) {
             return;
@@ -53,7 +53,7 @@ public abstract class HudExtractorMixin {
     }
 
     // Hide infinite effect icons
-    @WrapOperation(method = "extractEffects", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIIII)V"))
+    @WrapOperation(method = "extractEffects", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/renderpearl/api/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIIII)V"))
     private void onExtractEffectSprite(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, int color, Operation<Void> original, @Local(name = "instance") MobEffectInstance effectInstance, @Local(name = "beneficialCount") LocalIntRef beneficialCountRef, @Local(name = "harmfulCount") LocalIntRef harmfulCountRef) {
         MobEffect effect = effectInstance.getEffect().value();
         if (AutoHideHotbarConfig.effectsHidingMode == AutoHideHotbarConfig.EffectsHidingMode.ALL) {
@@ -72,7 +72,7 @@ public abstract class HudExtractorMixin {
     }
 
     // Apply opacity to or hide hotbar background and selection sprites
-    @WrapOperation(method = "extractItemHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
+    @WrapOperation(method = "extractItemHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/renderpearl/api/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
     private void onExtractItemHotbar(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
         if (!HotbarStateTracker.isHotbarActive()) {
             switch (AutoHideHotbarConfig.hotbarInactivityMode) {
@@ -103,7 +103,7 @@ public abstract class HudExtractorMixin {
     }
 
     // Apply opacity to or hide armor
-    @WrapOperation(method = "extractArmor", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
+    @WrapOperation(method = "extractArmor", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/renderpearl/api/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
     private static void onExtractArmor(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
         if (!StatChangeTracker.isArmorActive()) {
             switch (AutoHideHotbarConfig.armorInactivityMode) {
@@ -124,8 +124,8 @@ public abstract class HudExtractorMixin {
     }
 
     // Apply opacity to or hide health
-    @WrapOperation(method = "extractHeart", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
-    private static void onExtractHearts(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
+    @WrapOperation(method = "extractHeart", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/renderpearl/api/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
+    private static void onExtractHeart(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
         if (!StatChangeTracker.isHealthActive()) {
             switch (AutoHideHotbarConfig.healthInactivityMode) {
                 case AutoHideHotbarConfig.ElementInactivityMode.OPACITY -> {
@@ -145,7 +145,7 @@ public abstract class HudExtractorMixin {
     }
 
     // Apply opacity to or hide air bubbles
-    @WrapOperation(method = "extractAirBubbles", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
+    @WrapOperation(method = "extractAirBubbles", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/renderpearl/api/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
     private static void onExtractAirBubbles(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
         switch (AutoHideHotbarConfig.airSupplyDisplayMode) {
             case AutoHideHotbarConfig.AirSupplyDisplayMode.OPACITY -> {
@@ -160,7 +160,7 @@ public abstract class HudExtractorMixin {
     }
 
     // Apply opacity to or hide hunger
-    @WrapOperation(method = "extractFood", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
+    @WrapOperation(method = "extractFood", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/renderpearl/api/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
     private static void onExtractFood(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
         if (!StatChangeTracker.isHungerActive()) {
             switch (AutoHideHotbarConfig.hungerInactivityMode) {
@@ -181,7 +181,7 @@ public abstract class HudExtractorMixin {
     }
 
     // Apply opacity to or hide vehicle health
-    @WrapOperation(method = "extractVehicleHealth", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
+    @WrapOperation(method = "extractVehicleHealth", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blitSprite(Lcom/mojang/renderpearl/api/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIII)V"))
     private static void onExtractVehicleHealth(GuiGraphicsExtractor instance, RenderPipeline renderPipeline, Identifier location, int x, int y, int width, int height, Operation<Void> original) {
         if (!StatChangeTracker.isVehicleHealthActive()) {
             switch (AutoHideHotbarConfig.healthInactivityMode) {
