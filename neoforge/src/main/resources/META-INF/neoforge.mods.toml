@@ -35,7 +35,7 @@ side = "CLIENT"
 
 [mc-publish]
 dependencies=[
-    "midnightlib@${midnightlib_version}(embedded){modrinth:codAaoxh}{curseforge:488090}",
+    "midnightlib@${midnightlib_neoforge_version}(embedded){modrinth:codAaoxh}{curseforge:488090}",
     "architectury(required){modrinth:lhGA9TYQ}{curseforge:419699}"
 ]
 
