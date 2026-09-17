@@ -28,6 +28,7 @@ jobs:
 
           loaders: |
             fabric
+          environment: client
 
           version: ${{ github.event.release.tag_name }}-fabric
 
@@ -45,6 +46,7 @@ jobs:
 
           loaders: |
             neoforge
+          environment: client
 
           version: ${{ github.event.release.tag_name }}-neoforge
 
